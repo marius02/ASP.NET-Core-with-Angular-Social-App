@@ -35,6 +35,11 @@
             >Messages</a
           >
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/errors" routerLinkActive="active"
+            >Errors</a
+          >
+        </li>
       </ul>
 
       <div
@@ -60,7 +65,9 @@
           aria-labelledby="dropdownMenuLink"
           *dropdownMenu
         >
-          <a class="dropdown-item" href="#">Edit Profile</a>
+          <a routerLink="./member/edit" class="dropdown-item" href="#"
+            >Edit Profile</a
+          >
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
         </div>
