@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
@@ -12,6 +13,7 @@ import { MembersService } from 'src/app/_services/members.service';
   styleUrls: ['./member-edit.component.css'],
 })
 export class MemberEditComponent implements OnInit {
+  @ViewChild('editForm') editForm: NgForm | undefined;
   member!: Member;
   user!: User;
 
@@ -36,7 +38,9 @@ export class MemberEditComponent implements OnInit {
   }
 
   updateMember() {
-    console.log(this.member);
-    this.tostr.success('Profile updated');
+    this.memberService.updateMember(this.member).subscribe(() => {
+      this.tostr.success('Profile updated');
+      this.editForm?.reset(this.member);
+    });
   }
 }
